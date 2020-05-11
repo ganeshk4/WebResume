@@ -14,15 +14,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private adalService: MsAdalAngular6Service) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authReq = request.clone({
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.adalService.accessToken
       })
-    });
-
-    console.log('Intercepted HTTP call', authReq);
-
+    });9
     return next.handle(authReq);
   }
 }

@@ -14,6 +14,7 @@ var auth = function (req, res, next) {
     }
     if (token) {
         aad.verify(token, {audience: audience}, (err,result) => {
+            console.log(err);
             if (result) {
                 req.verified = true;
                 next();

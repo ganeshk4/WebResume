@@ -13,8 +13,8 @@ export class ApiService {
 
   get(url) {
     return new Observable(obs => {
-      this.http.get(this.apiPath + url).subscribe((data) => {
-        obs.next(data);
+      this.http.get(this.apiPath + url).subscribe((res: any) => {
+        obs.next(res.data);
         obs.complete();
       }, (err) => {
         obs.next(err);

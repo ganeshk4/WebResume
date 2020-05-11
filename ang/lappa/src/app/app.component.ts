@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDetailsService } from './user/services/user-details.service';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.userDetailsService.getAllUserDetails().subscribe(data => {
-      console.log(data);
+    this.userDetailsService.getAllUserDetails().subscribe(res => {
+      console.log(res);
     });
 
     console.log(this.adalService.LoggedInUserEmail);

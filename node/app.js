@@ -23,4 +23,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions), auth);
 app.use('/api', cors(corsOptions), apiRouter);
 
+const db = require("./models");
+db.sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+})
+.catch(err => {
+  console.error('Unable to connect to the database:', err);
+});
+
 module.exports = app;
